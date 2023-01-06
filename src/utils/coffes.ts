@@ -6,6 +6,7 @@ export const CoffesUtils = [
         features: ['Tradicional'],
         image: 'expresso',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -14,6 +15,7 @@ export const CoffesUtils = [
         features: ['Tradicional'],
         image: 'americano',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -22,6 +24,7 @@ export const CoffesUtils = [
         features: ['Tradicional'],
         image: 'expresso-cremoso',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -30,6 +33,7 @@ export const CoffesUtils = [
         features: ['Tradicional', 'gelado'],
         image: 'cafe-gelado',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -38,6 +42,7 @@ export const CoffesUtils = [
         features: ['Tradicional', 'com leite'],
         image: 'cafe-leite',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -46,6 +51,7 @@ export const CoffesUtils = [
         features: ['Tradicional', 'com leite'],
         image: 'latte',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -54,6 +60,7 @@ export const CoffesUtils = [
         features: ['Tradicional', 'com leite'],
         image: 'capuccino',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -62,6 +69,7 @@ export const CoffesUtils = [
         features: ['Tradicional', 'com leite'],
         image: 'macchiato',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -70,6 +78,7 @@ export const CoffesUtils = [
         features: ['Tradicional', 'com leite'],
         image: 'mochaccino',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -78,6 +87,7 @@ export const CoffesUtils = [
         features: ['Especial', 'com leite'],
         image: 'chocolate-quente',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -86,6 +96,7 @@ export const CoffesUtils = [
         features: ['Especial', 'alcoólico', 'Gelado'],
         image: 'cubano',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -94,6 +105,7 @@ export const CoffesUtils = [
         features: ['Especial'],
         image: 'havaiano',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -102,6 +114,7 @@ export const CoffesUtils = [
         features: ['Especial'],
         image: 'arabe',
         price: 9.90,
+        quantity: 1,
     },
     {
         id: String(Math.floor(Date.now() * Math.random()).toString(10)),
@@ -110,5 +123,6 @@ export const CoffesUtils = [
         features: ['Especial', 'alcoólico'],
         image: 'irlandes',
         price: 9.90,
+        quantity: 1,
     },
 ]

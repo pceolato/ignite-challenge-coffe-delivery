@@ -34,6 +34,13 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     // const [cart, setCart] = useState<any>([])
     const [cart, dispatch] = useReducer((state: any, action: any) => {
         switch(action.type) {
+            //TODO
+            case 'CARRY_CART': {
+                return produce(state, (draft: any) => {
+                    draft.state?.push(action.payload.storage)
+                    console.log(action.payload.storage)
+                })
+            }
 
             case 'ADD_ORDER_IN_CART': {
                 const currentOrderIndex = state.findIndex((order: any) => {
@@ -62,9 +69,21 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         })
     }
 
+    //TODO
     useEffect(() => {
-        
-    }, [cart])
+        const storage = localStorage.getItem('@coffe-delivery-coffes')
+        dispatch({
+            type: 'CARRY_CART',
+            payload: {
+                storage
+            },
+        })
+        // console.log(storage)
+    }, [])
+    
+    // useEffect(() => {
+    //     localStorage.setItem('@coffe-delivery-coffes', JSON.stringify(cart))
+    // }, [cart])
 
     return (
         <CoffeContext.Provider value={{coffes, handleSetCart, cart}}>
