@@ -47,4 +47,31 @@ export const CartButton = styled.button`
     cursor: pointer;
 
     margin-left: 0.75rem;
+    position: relative;
+`
+
+export const CountCart = styled.div`
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+
+    border-radius: 50%;
+
+    background: ${props => props.theme['yellow-dark']};
+    color: ${(props) => props.theme.white};
+
+    font-size: 0.75rem;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    z-index: 1;
+
+    top: calc(0px - 0.5rem);
+    right: calc(0px - 0.5rem);
 `

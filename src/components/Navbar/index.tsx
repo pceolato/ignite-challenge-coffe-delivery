@@ -1,8 +1,12 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
-import { CartButton, Location, NavbarContainer, NavbarContent, TextLocation } from './styles'
+import { useContext } from 'react'
+import { CoffeContext } from '../../contexts/CoffeContext'
+import { CartButton, CountCart, Location, NavbarContainer, NavbarContent, TextLocation } from './styles'
 import logo from '/Logo.svg'
 
 export function Navbar() {
+    const { cart } = useContext(CoffeContext)
+
     return (
         <NavbarContainer>
             <img src={logo} alt="" />
@@ -15,6 +19,13 @@ export function Navbar() {
                 </Location>
 
                 <CartButton>
+                    {
+                        cart?.length > 0 && (
+                            <CountCart>
+                                {cart.length}
+                            </CountCart>
+                        )
+                    }
                     <ShoppingCart size={24} color="#C47F17" weight="fill" />
                 </CartButton>
             </NavbarContent>

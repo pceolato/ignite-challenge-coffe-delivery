@@ -7,7 +7,6 @@ import { CoffesContainer, CoffesContent, Features, InfosContent, IntroContainer,
 
 export function Home() {
     const { coffes } = useContext(CoffeContext)
-    console.log(coffes)
 
     return (
         <>
@@ -35,7 +34,8 @@ export function Home() {
                     {
                         coffes.map(coffe => (
                             <CardCoffe
-                                key={coffe.title}
+                                key={coffe.id}
+                                id={coffe.id}
                                 title={coffe.title}
                                 description={coffe.description}
                                 features={coffe.features}

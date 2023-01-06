@@ -2,15 +2,18 @@ import { CoffeContainer, CoffeImg, Description, FeatureCoffe, FeaturesCoffe, Tit
 
 // import CoffeExpresso from '../../../../assets/coffes/expresso.svg';
 import { AmountCart } from '../AmountCart';
+import { CoffeContext } from '../../../../contexts/CoffeContext';
+import { useContext } from 'react';
 
 interface CardCoffeProps {
+    id: string;
     image: string;
     features?: string[];
     title: string;
     description: string;
 }
 
-export function CardCoffe({image, features, title, description}: CardCoffeProps) {
+export function CardCoffe({id, image, features, title, description}: CardCoffeProps) {
     return (
         <CoffeContainer>
             <CoffeImg>
@@ -31,7 +34,7 @@ export function CardCoffe({image, features, title, description}: CardCoffeProps)
             <Description>
                 {description}
             </Description>
-            <AmountCart />
+            <AmountCart id={id} />
         </CoffeContainer>
     )
 }
