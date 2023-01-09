@@ -127,15 +127,15 @@ export function Checkout() {
                         </div>
                     </DescriptionPayment>
                     <PaymentOptions>
-                        <CardOption>
+                        <CardOption type="button">
                             <CreditCard size={16} color="#8047f8" />
                             <TitleCardPayment>Cartão de crédito</TitleCardPayment>
                         </CardOption>
-                        <CardOption>
+                        <CardOption type="button">
                             <Bank size={16} color="#8047f8" />
                             <TitleCardPayment>Cartão de débito</TitleCardPayment>
                         </CardOption>
-                        <CardOption>
+                        <CardOption type="button">
                             <Money size={16} color="#8047f8" />
                             <TitleCardPayment>Dinheiro</TitleCardPayment>
                         </CardOption>
