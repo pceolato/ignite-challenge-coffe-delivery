@@ -22,12 +22,14 @@ export function AmountCart({id}: AmountCartProps) {
     function addNewOrder() {
         const coffeSellect = coffes.find(coffe => coffe.id === id)
 
-        const coffeOrder = {
-            ...coffeSellect,
-            quantity: amountCoffe
+        if(coffeSellect !== undefined) {
+            const coffeOrder = {
+                ...coffeSellect,
+                quantity: amountCoffe
+            }
+    
+            handleSetCart(coffeOrder)
         }
-
-        handleSetCart(coffeOrder)
     }
     
     return (

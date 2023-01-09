@@ -9,15 +9,14 @@ interface Coffe{
     features: string[];
     image: string;
     price: number;
-    quantity?: number;
+    quantity: number;
 }
-
-type CartType = Coffe
 
 interface CoffeContextType {
     coffes: Coffe[];
-    cart: any
-    handleSetCart:(order: any) => void;
+    cart: Coffe[];
+    handleSetCart:(order: Coffe) => void;
+    handleDeleteOfCart:(id: string) => void;
 }
 
 interface CoffeContextProviderProps {
@@ -31,20 +30,15 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
 
     const [coffes, setCoffes] = useState<Coffe[]>(coffesList)
 
-    // const [cart, setCart] = useState<any>([])
-    const [cart, dispatch] = useReducer((state: any, action: any) => {
+    const [cart, dispatch] = useReducer((state: Coffe[], action: any)  => {
         switch(action.type) {
             //TODO
             case 'CARRY_CART': {
-                // return produce(state, (draft: any) => {
-                //     console.log('Passou aqui', action.payload.storage )
-                //     draft.state?.push(action.payload.storage)
-                // })
                 return action.payload.storage
             }
 
             case 'ADD_ORDER_IN_CART': {
-                const currentOrderIndex = state.findIndex((order: any) => {
+                const currentOrderIndex = state.findIndex(order => {
                     return order.id === action.id
                 })
 
@@ -52,15 +46,28 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
                     return [...state, action.payload.order]
                 }
 
-                return produce(state, (draft: any) => {
+                return produce(state, draft => {
                     const currentQuantity = state[currentOrderIndex].quantity
                     draft[currentOrderIndex].quantity = currentQuantity + action.payload.order.quantity
                 })
             }
+
+            case 'DELETE_OF_CART': {
+                const newCart = state.filter(order => {
+                    return order.id !== action.id
+                })
+                
+                if(newCart) {
+                    return newCart
+                }
+            }
+
+            default: 
+                return state
         }
     }, [])
 
-    function handleSetCart(order: any) {
+    function handleSetCart(order: Coffe) {
         dispatch({
             type: 'ADD_ORDER_IN_CART',
             payload: {
@@ -69,8 +76,14 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
             id: order.id
         })
     }
+
+    function handleDeleteOfCart(id: string) {
+        dispatch({
+            type: 'DELETE_OF_CART',
+            id: id
+        })
+    }
     
-    //TODO
     useEffect(() => {
         const storage = localStorage.getItem('@coffe-delivery-coffes')
         if(storage !== null) {
@@ -82,16 +95,17 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
             })
         }
     }, [])
-    console.log(cart)
+
+    // console.log('Contexto', cart)
     
     useEffect(() => {
-        if(cart?.length !== 0) {
+        if(cart.length >= 0) {
             localStorage.setItem('@coffe-delivery-coffes', JSON.stringify(cart))
         }
     }, [cart])
 
     return (
-        <CoffeContext.Provider value={{coffes, handleSetCart, cart}}>
+        <CoffeContext.Provider value={{coffes, handleSetCart, cart, handleDeleteOfCart}}>
             { children }
         </CoffeContext.Provider>
     )

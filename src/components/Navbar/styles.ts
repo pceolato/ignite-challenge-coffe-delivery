@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
+    width: 90%;
     max-width: 70rem;
     display: flex;
     justify-content: space-between;
@@ -10,9 +11,6 @@ export const NavbarContainer = styled.div`
 
     padding: 2rem 0;
 
-    @media (max-width: 768px) {
-        padding-inline: 1rem;
-    }
 `
 
 export const NavbarContent = styled.div`

@@ -10,16 +10,12 @@ export const IntroContainer = styled.div`
   `
 
 export const IntroContent = styled.div`
+    width: 90%;
     max-width: 70rem;
     display: flex;
     justify-content: space-between;
     
     margin: 0 auto;
-
-    @media (max-width: 768px) {
-        padding-inline: 1rem;
-    }
-    
     
     img {
         @media (max-width: 768px) {
@@ -66,11 +62,9 @@ export const Features = styled.div`
 
 export const CoffesContainer = styled.div`
     margin: 0 auto;
-    max-width: 70rem;
+    width: 90%;
 
-    @media (max-width: 768px) {
-        padding-inline: 1rem;
-    }
+    max-width: 70rem;
 `
 export const CoffesContent = styled.div`
     display: flex;
