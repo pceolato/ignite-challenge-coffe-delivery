@@ -40,6 +40,7 @@ export function Home() {
                                 description={coffe.description}
                                 features={coffe.features}
                                 image={coffe.image}
+                                price={coffe.price}
                             />
                         ))
                     }

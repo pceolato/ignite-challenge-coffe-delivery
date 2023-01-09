@@ -34,7 +34,7 @@ import { useNavigate } from 'react-router-dom';
 
 export function Checkout() {
     const { cart } = useContext(CoffeContext)
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, watch } = useForm()
 
     const navigate = useNavigate();
 
@@ -42,9 +42,13 @@ export function Checkout() {
         navigate('/')
     }
     
-    function handleConfirmOrder() {
-        // console.log(register)
+    function handleConfirmCart(data: any) {
+        console.log(data)
     }
+
+    const zipCode = watch('zip-code')
+    
+    console.log(zipCode)
 
     useEffect(() => {
         console.log("carttt:", cart)
@@ -53,8 +57,10 @@ export function Checkout() {
     const totalPrice = cart?.map((s) => s.price * s.quantity)
     .reduce((to, from) => to + from, 0);
 
+    const formattPrice = totalPrice.toLocaleString('pt-br',{minimumFractionDigits: 2})
+
     return (
-        <CheckoutFormContainer onSubmit={handleSubmit(handleConfirmOrder)}>
+        <CheckoutFormContainer onSubmit={handleSubmit(handleConfirmCart)}>
             <OrderContainer>
                 <Title>Complete seu pedido</Title>
                 <FormContent>
@@ -161,7 +167,7 @@ export function Checkout() {
                             <>
                                 <ItemsTotal>
                                     Total de itens
-                                    <span>R$ {totalPrice}</span>
+                                    <span>R$ {formattPrice}</span>
                                 </ItemsTotal>
                                 <ItemsTotal>
                                     Entrega

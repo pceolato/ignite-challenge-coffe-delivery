@@ -27,6 +27,8 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
         handleDeleteOfCart(id)
     }
 
+    const formattPrice = value.toLocaleString('pt-br',{minimumFractionDigits: 2})
+
     return (
         <CoffeContent>
             <ImageCoffe src={`/coffes/${image}.svg`} alt="" />
@@ -49,7 +51,7 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
                         </RemoveButton>
                     </Quantity>
                 </div>
-                <PriceCoffeTotal>R$ {value}</PriceCoffeTotal>
+                <PriceCoffeTotal>R$ {formattPrice}</PriceCoffeTotal>
             </CoffeDescription>
         </CoffeContent>
     )

@@ -161,6 +161,7 @@ export const CardOption = styled.button`
     border: 1px solid transparent;
 
     display: flex;
+    align-items: center;
     gap: 0.75rem;
 
     &:hover {

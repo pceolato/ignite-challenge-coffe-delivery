@@ -96,11 +96,13 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         }
     }, [])
 
-    // console.log('Contexto', cart)
+    console.log('Contexto', cart)
     
     useEffect(() => {
-        if(cart.length >= 0) {
+        if(cart.length !== 0) {
             localStorage.setItem('@coffe-delivery-coffes', JSON.stringify(cart))
+        } else {
+            localStorage.removeItem('@coffe-delivery-coffes')
         }
     }, [cart])
 

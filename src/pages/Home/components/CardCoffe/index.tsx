@@ -8,12 +8,13 @@ import { useContext } from 'react';
 interface CardCoffeProps {
     id: string;
     image: string;
-    features?: string[];
+    features: string[];
     title: string;
     description: string;
+    price: number;
 }
 
-export function CardCoffe({id, image, features, title, description}: CardCoffeProps) {
+export function CardCoffe({id, image, features, title, description, price}: CardCoffeProps) {
     return (
         <CoffeContainer>
             <CoffeImg>
@@ -34,7 +35,7 @@ export function CardCoffe({id, image, features, title, description}: CardCoffePr
             <Description>
                 {description}
             </Description>
-            <AmountCart id={id} />
+            <AmountCart id={id} price={price}/>
         </CoffeContainer>
     )
 }

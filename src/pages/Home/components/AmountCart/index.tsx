@@ -5,9 +5,10 @@ import { Amount, CartButton, CartContainer, MinusButton, PlusButton, Price, Purc
 
 interface AmountCartProps {
     id: string;
+    price: number;
 }
 
-export function AmountCart({id}: AmountCartProps) {
+export function AmountCart({id, price}: AmountCartProps) {
     const { coffes ,handleSetCart } = useContext(CoffeContext)
     const [ amountCoffe, setAmountCoffe ] = useState(1)
 
@@ -31,12 +32,14 @@ export function AmountCart({id}: AmountCartProps) {
             handleSetCart(coffeOrder)
         }
     }
+
+    const formattPrice = price.toLocaleString('pt-br',{minimumFractionDigits: 2})
     
     return (
         <PurchaseCoffe>
             <Price>
                 <span>R$</span>
-                9,90
+                {formattPrice}
             </Price>
             <CartContainer>
                 <Amount>
