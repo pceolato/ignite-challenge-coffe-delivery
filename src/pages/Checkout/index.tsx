@@ -46,18 +46,14 @@ export function Checkout() {
         console.log(data)
     }
 
-    const zipCode = watch('zip-code')
-    
-    console.log(zipCode)
-
-    useEffect(() => {
-        console.log("carttt:", cart)
-    }, [])
+    const zipCode = watch('zip-code')    
+    // console.log(zipCode)
 
     const totalPrice = cart?.map((s) => s.price * s.quantity)
     .reduce((to, from) => to + from, 0);
 
     const formattPrice = totalPrice.toLocaleString('pt-br',{minimumFractionDigits: 2})
+    const formattPriceTotal = (totalPrice + 3.50).toLocaleString('pt-br',{minimumFractionDigits: 2})
 
     return (
         <CheckoutFormContainer onSubmit={handleSubmit(handleConfirmCart)}>
@@ -175,7 +171,7 @@ export function Checkout() {
                                 </ItemsTotal>
                                 <TotalOrder>
                                     Total
-                                    <strong>R$ {totalPrice + 3.50}</strong>
+                                    <strong>R$ {formattPriceTotal}</strong>
                                 </TotalOrder>
                                 <ConfirmButton type="submit">confirmar pedido</ConfirmButton>
                             </>

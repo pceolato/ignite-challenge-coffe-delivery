@@ -95,8 +95,6 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
             })
         }
     }, [])
-
-    console.log('Contexto', cart)
     
     useEffect(() => {
         if(cart.length !== 0) {
