@@ -36,10 +36,11 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         switch(action.type) {
             //TODO
             case 'CARRY_CART': {
-                return produce(state, (draft: any) => {
-                    draft.state?.push(action.payload.storage)
-                    console.log(action.payload.storage)
-                })
+                // return produce(state, (draft: any) => {
+                //     console.log('Passou aqui', action.payload.storage )
+                //     draft.state?.push(action.payload.storage)
+                // })
+                return action.payload.storage
             }
 
             case 'ADD_ORDER_IN_CART': {
@@ -68,22 +69,26 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
             id: order.id
         })
     }
-
+    
     //TODO
     useEffect(() => {
         const storage = localStorage.getItem('@coffe-delivery-coffes')
-        dispatch({
-            type: 'CARRY_CART',
-            payload: {
-                storage
-            },
-        })
-        // console.log(storage)
+        if(storage !== null) {
+            dispatch({
+                type: 'CARRY_CART',
+                payload: {
+                    storage: JSON.parse(storage)
+                },
+            })
+        }
     }, [])
+    console.log(cart)
     
-    // useEffect(() => {
-    //     localStorage.setItem('@coffe-delivery-coffes', JSON.stringify(cart))
-    // }, [cart])
+    useEffect(() => {
+        if(cart?.length !== 0) {
+            localStorage.setItem('@coffe-delivery-coffes', JSON.stringify(cart))
+        }
+    }, [cart])
 
     return (
         <CoffeContext.Provider value={{coffes, handleSetCart, cart}}>
