@@ -32,9 +32,11 @@ import { useContext, useEffect } from 'react';
 import { CoffeContext } from '../../contexts/CoffeContext';
 import { useNavigate } from 'react-router-dom';
 
+import cep from 'cep-promise'
+
 export function Checkout() {
     const { cart } = useContext(CoffeContext)
-    const { register, handleSubmit, watch } = useForm()
+    const { register, handleSubmit, watch, setValue } = useForm()
 
     const navigate = useNavigate();
 
@@ -46,10 +48,24 @@ export function Checkout() {
         console.log(data)
     }
 
-    const zipCode = watch('zip-code')    
-    // console.log(zipCode)
+    const zipCode = watch('zip-code')?.trim()
+    
+    register('zip-code', {
+        onBlur: (e) => getZipCode()
+    })
 
-    const totalPrice = cart?.map((s) => s.price * s.quantity)
+    async function getZipCode() {
+        if(!!zipCode) {
+            const res = await cep(zipCode)
+    
+            setValue('street', res.street)
+            setValue('district', res.neighborhood)
+            setValue('city', res.city)
+            setValue('state', res.state)
+        }
+    }
+
+    const totalPrice = cart?.map((order) => order.price * order.quantity)
     .reduce((to, from) => to + from, 0);
 
     const formattPrice = totalPrice.toLocaleString('pt-br',{minimumFractionDigits: 2})
@@ -96,7 +112,7 @@ export function Checkout() {
                     <CityState>
                         <DistricCity>
                             <DistrictInput
-                                id="District"
+                                id="district"
                                 type="text"
                                 placeholder="Bairro"
                                 {...register('district')}
