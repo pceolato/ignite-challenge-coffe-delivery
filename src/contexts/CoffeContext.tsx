@@ -18,6 +18,7 @@ interface CoffeContextType {
     handleSetCart:(order: Coffe) => void;
     handleDeleteOfCart:(id: string) => void;
     handleSetQuantity:(id: string, quantity: number) => void;
+    handleClearCart:() => void;
 }
 
 interface CoffeContextProviderProps {
@@ -77,6 +78,10 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
                 })
             }
 
+            case 'CLEAR_CART': {
+                return state = []
+            }
+
             default: 
                 return state
         }
@@ -110,9 +115,13 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
             }
         })
     }
+
+    function handleClearCart() {
+        dispatch({ type: 'CLEAR_CART' })
+    }
     
     useEffect(() => {
-        const storage = localStorage.getItem('@coffe-delivery-coffes')
+        const storage = localStorage.getItem('@coffe-delivery-cart')
         if(storage !== null) {
             dispatch({
                 type: 'CARRY_CART',
@@ -125,14 +134,22 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     
     useEffect(() => {
         if(cart.length !== 0) {
-            localStorage.setItem('@coffe-delivery-coffes', JSON.stringify(cart))
+            localStorage.setItem('@coffe-delivery-cart', JSON.stringify(cart))
         } else {
-            localStorage.removeItem('@coffe-delivery-coffes')
+            localStorage.removeItem('@coffe-delivery-cart')
         }
     }, [cart])
 
     return (
-        <CoffeContext.Provider value={{coffes, handleSetCart, cart, handleDeleteOfCart, handleSetQuantity}}>
+        <CoffeContext.Provider 
+            value={{
+                coffes,
+                handleSetCart,
+                cart,
+                handleDeleteOfCart,
+                handleSetQuantity,
+                handleClearCart
+            }}>
             { children }
         </CoffeContext.Provider>
     )

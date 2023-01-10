@@ -25,18 +25,20 @@ import { CalculatePrice, CardOption, CheckoutFormContainer,
             TitleOrder,
             TotalOrder,
             ZipCodeInput } from './styles';
-import { useForm, useFormContext } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from 'phosphor-react';
 import { CountCoffe } from './components/CountCoffe';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CoffeContext } from '../../contexts/CoffeContext';
 import { useNavigate } from 'react-router-dom';
 
 import cep from 'cep-promise'
 
 export function Checkout() {
-    const { cart } = useContext(CoffeContext)
+    const { cart, handleClearCart } = useContext(CoffeContext)
     const { register, handleSubmit, watch, setValue } = useForm()
+
+    const [ typePayment, setTypePayment ] = useState('')
 
     const navigate = useNavigate();
 
@@ -45,7 +47,13 @@ export function Checkout() {
     }
     
     function handleConfirmCart(data: any) {
-        console.log(data)
+        const checkoutData = {
+            ...data,
+            typePayment
+        }
+        localStorage.setItem('@coffe-delivery-success', JSON.stringify(checkoutData))
+        handleClearCart()
+        navigate('/order-success')
     }
 
     const zipCode = watch('zip-code')?.trim()
@@ -87,12 +95,14 @@ export function Checkout() {
                         id="zip-code"
                         type="text"
                         placeholder="CEP"
+                        required
                         {...register('zip-code')}
                     />
                     <StreetInput
                         id="street"
                         type="text"
                         placeholder="Rua"
+                        required
                         {...register('street')}
                     />
                     <NumberComplement>
@@ -100,6 +110,7 @@ export function Checkout() {
                             id="number"
                             type="text"
                             placeholder="Número"
+                            required
                             {...register('number')}
                         />
                         <ComplementInput
@@ -115,12 +126,14 @@ export function Checkout() {
                                 id="district"
                                 type="text"
                                 placeholder="Bairro"
+                                required
                                 {...register('district')}
                             />  
                             <CityInput
                                 id="city"
                                 type="text"
                                 placeholder="Cidade"
+                                required
                                 {...register('city')}
                             />
                         </DistricCity>
@@ -128,6 +141,7 @@ export function Checkout() {
                             id="state"
                             type="text"
                             placeholder="UF"
+                            required
                             {...register('state')}
                         />      
                     </CityState>
@@ -143,15 +157,24 @@ export function Checkout() {
                         </div>
                     </DescriptionPayment>
                     <PaymentOptions>
-                        <CardOption type="button">
+                        <CardOption 
+                            type="button"
+                            onClick={() => setTypePayment('Cartão de crédito')}
+                        >
                             <CreditCard size={16} color="#8047f8" />
                             <TitleCardPayment>Cartão de crédito</TitleCardPayment>
                         </CardOption>
-                        <CardOption type="button">
+                        <CardOption 
+                            type="button"
+                            onClick={() => setTypePayment('Cartão de débito')}    
+                        >
                             <Bank size={16} color="#8047f8" />
                             <TitleCardPayment>Cartão de débito</TitleCardPayment>
                         </CardOption>
-                        <CardOption type="button">
+                        <CardOption
+                            type="button"
+                            onClick={() => setTypePayment('Dinheiro')}
+                        >
                             <Money size={16} color="#8047f8" />
                             <TitleCardPayment>Dinheiro</TitleCardPayment>
                         </CardOption>
@@ -189,7 +212,7 @@ export function Checkout() {
                                     Total
                                     <strong>R$ {formattPriceTotal}</strong>
                                 </TotalOrder>
-                                <ConfirmButton type="submit">confirmar pedido</ConfirmButton>
+                                <ConfirmButton type="submit" disabled={typePayment === ''}>confirmar pedido</ConfirmButton>
                             </>
                             ) : (
                                 <> 

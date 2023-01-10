@@ -16,13 +16,13 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
     const { cart, handleDeleteOfCart, handleSetQuantity } = useContext(CoffeContext)
 
     function increaseCoffe() {
-        setCurrentQuantity(currentQuantity + 1)
-        handleSetQuantity(id, currentQuantity)
+        setCurrentQuantity(state => state + 1)
+        handleSetQuantity(id, (currentQuantity + 1))
     }
 
     function decreaseCoffe() {
-        setCurrentQuantity(currentQuantity - 1)
-        handleSetQuantity(id, currentQuantity)
+        setCurrentQuantity(state => state - 1)
+        handleSetQuantity(id, (currentQuantity -1))
     }
 
     function click() {
@@ -43,7 +43,7 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
                             <MinusButton 
                                 onClick={decreaseCoffe} 
                                 type="button"
-                                disabled={currentQuantity === 1 }
+                                disabled={currentQuantity <= 1 }
                             >
                                 <Minus size={14} color="#8047f8" weight="bold" />
                             </MinusButton>
@@ -51,7 +51,6 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
                             <PlusButton 
                                 onClick={increaseCoffe} 
                                 type="button"
-                                disabled={currentQuantity === 10 }    
                             >
                                 <Plus size={14} color="#8047f8" weight="bold" />
                             </PlusButton>

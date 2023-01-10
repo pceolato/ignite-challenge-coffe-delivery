@@ -18,7 +18,7 @@ export const IntroContent = styled.div`
     margin: 0 auto;
     
     img {
-        @media (max-width: 768px) {
+        @media (max-width: 941px) {
             display: none;
         }
     }

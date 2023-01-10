@@ -13,11 +13,11 @@ export function AmountCart({id, price}: AmountCartProps) {
     const [ amountCoffe, setAmountCoffe ] = useState(1)
 
     function increaseCoffe() {
-        setAmountCoffe(amountCoffe + 1)
+        setAmountCoffe(state => state + 1)
     }
 
     function decreaseCoffe() {
-        setAmountCoffe(amountCoffe - 1)
+        setAmountCoffe(state => state - 1)
     }
 
     function addNewOrder() {
@@ -47,7 +47,7 @@ export function AmountCart({id, price}: AmountCartProps) {
                         <Minus size={14} color="#8047f8" weight="bold" />
                     </MinusButton>
                     {amountCoffe}
-                    <PlusButton onClick={increaseCoffe} disabled={amountCoffe >= 10}>
+                    <PlusButton onClick={increaseCoffe}>
                         <Plus size={14} color="#8047f8" weight="bold" />
                     </PlusButton>
                 </Amount>

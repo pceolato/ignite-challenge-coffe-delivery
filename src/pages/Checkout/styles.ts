@@ -245,7 +245,12 @@ export const ConfirmButton = styled.button`
     width: 100%;
     padding: 0.75rem;
 
-    &:hover {
+    &:disabled {
+        opacity: 0.8;
+        cursor: not-allowed;
+    }
+
+    &[not-disabled]:hover {
         background: ${props => props.theme['yellow-dark']};
     }
 `
