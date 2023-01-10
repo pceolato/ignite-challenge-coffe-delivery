@@ -13,14 +13,16 @@ interface CountCoffe {
 
 export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
     const [currentQuantity, setCurrentQuantity] = useState(quantity)
-    const { cart, handleDeleteOfCart } = useContext(CoffeContext)
+    const { cart, handleDeleteOfCart, handleSetQuantity } = useContext(CoffeContext)
 
     function increaseCoffe() {
         setCurrentQuantity(currentQuantity + 1)
+        handleSetQuantity(id, currentQuantity)
     }
 
     function decreaseCoffe() {
         setCurrentQuantity(currentQuantity - 1)
+        handleSetQuantity(id, currentQuantity)
     }
 
     function click() {
@@ -28,6 +30,7 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
     }
 
     const formattPrice = value.toLocaleString('pt-br',{minimumFractionDigits: 2})
+
 
     return (
         <CoffeContent>
@@ -37,15 +40,26 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
                     <TitleCoffe>{title}</TitleCoffe>
                     <Quantity>
                         <Amount>
-                            <MinusButton onClick={decreaseCoffe} >
+                            <MinusButton 
+                                onClick={decreaseCoffe} 
+                                type="button"
+                                disabled={currentQuantity === 1 }
+                            >
                                 <Minus size={14} color="#8047f8" weight="bold" />
                             </MinusButton>
                                 {currentQuantity}
-                            <PlusButton onClick={increaseCoffe} >
+                            <PlusButton 
+                                onClick={increaseCoffe} 
+                                type="button"
+                                disabled={currentQuantity === 10 }    
+                            >
                                 <Plus size={14} color="#8047f8" weight="bold" />
                             </PlusButton>
                         </Amount>
-                        <RemoveButton onClick={click}>
+                        <RemoveButton 
+                            onClick={click} 
+                            type="button"   
+                        >
                             <Trash size={16} color="#8047f8" />
                             REMOVER
                         </RemoveButton>

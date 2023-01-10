@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cep-promise": "^4.3.0",
     "immer": "^9.0.17",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",

@@ -17,6 +17,7 @@ interface CoffeContextType {
     cart: Coffe[];
     handleSetCart:(order: Coffe) => void;
     handleDeleteOfCart:(id: string) => void;
+    handleSetQuantity:(id: string, quantity: number) => void;
 }
 
 interface CoffeContextProviderProps {
@@ -54,12 +55,26 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
 
             case 'DELETE_OF_CART': {
                 const newCart = state.filter(order => {
-                    return order.id !== action.id
+                    return order.id !== action.payload.id
                 })
                 
                 if(newCart) {
                     return newCart
                 }
+            }
+
+            case 'SET_QUANTITY': {
+                const currentOrderIndex = state.findIndex(order => {
+                    return order.id === action.payload.id
+                })
+
+                if(currentOrderIndex < 0) {
+                    return 
+                }
+
+                return produce(state, draft => {
+                    draft[currentOrderIndex].quantity = action.payload.quantity
+                })
             }
 
             default: 
@@ -77,10 +92,22 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         })
     }
 
+    function handleSetQuantity(id: string, quantity: number) {
+        dispatch({
+            type: 'SET_QUANTITY',
+            payload: {
+                id,
+                quantity
+            }
+        })
+    }
+
     function handleDeleteOfCart(id: string) {
         dispatch({
             type: 'DELETE_OF_CART',
-            id: id
+            payload: {
+                id
+            }
         })
     }
     
@@ -105,7 +132,7 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     }, [cart])
 
     return (
-        <CoffeContext.Provider value={{coffes, handleSetCart, cart, handleDeleteOfCart}}>
+        <CoffeContext.Provider value={{coffes, handleSetCart, cart, handleDeleteOfCart, handleSetQuantity}}>
             { children }
         </CoffeContext.Provider>
     )

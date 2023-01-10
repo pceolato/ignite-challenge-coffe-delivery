@@ -9,7 +9,7 @@ interface AmountCartProps {
 }
 
 export function AmountCart({id, price}: AmountCartProps) {
-    const { coffes ,handleSetCart } = useContext(CoffeContext)
+    const { coffes, handleSetCart } = useContext(CoffeContext)
     const [ amountCoffe, setAmountCoffe ] = useState(1)
 
     function increaseCoffe() {
