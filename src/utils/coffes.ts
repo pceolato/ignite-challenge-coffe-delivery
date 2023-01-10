@@ -1,6 +1,6 @@
 export const CoffesUtils = [
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '1',
         title: 'Expresso Tradicional',
         description: 'O tradicional café feito com água quente e grãos moídos',
         features: ['Tradicional'],
@@ -9,7 +9,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '2',
         title: 'Expresso Americano',
         description: 'Expresso diluído, menos intenso que o tradicional',
         features: ['Tradicional'],
@@ -18,7 +18,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '3',
         title: 'Expresso Cremoso',
         description: 'Café expresso tradicional com espuma cremosa',
         features: ['Tradicional'],
@@ -27,7 +27,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '4',
         title: 'Expresso Gelado',
         description: 'Bebida preparada com café expresso e cubos de gelo',
         features: ['Tradicional', 'gelado'],
@@ -36,7 +36,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '5',
         title: 'Café com Leite',
         description: 'Meio a meio de expresso tradicional com leite vaporizado',
         features: ['Tradicional', 'com leite'],
@@ -45,7 +45,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '6',
         title: 'Latte',
         description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
         features: ['Tradicional', 'com leite'],
@@ -54,7 +54,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '7',
         title: 'Capuccino',
         description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
         features: ['Tradicional', 'com leite'],
@@ -63,7 +63,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '8',
         title: 'Macchiato',
         description: 'Café expresso misturado com um pouco de leite quente e espuma',
         features: ['Tradicional', 'com leite'],
@@ -72,7 +72,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '9',
         title: 'Mocaccino',
         description: 'Café expresso com calda de chocolate, pouco leite e espuma',
         features: ['Tradicional', 'com leite'],
@@ -81,7 +81,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '10',
         title: 'Chocolate Quente',
         description: 'Bebida feita com chocolate dissolvido no leite quente e café',
         features: ['Especial', 'com leite'],
@@ -90,7 +90,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '11',
         title: 'Cubano',
         description: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
         features: ['Especial', 'alcoólico', 'Gelado'],
@@ -99,7 +99,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '12',
         title: 'Havaiano',
         description: 'Bebida adocicada preparada com café e leite de coco',
         features: ['Especial'],
@@ -108,7 +108,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '13',
         title: 'Árabe',
         description: 'Bebida preparada com grãos de café árabe e especiarias',
         features: ['Especial'],
@@ -117,7 +117,7 @@ export const CoffesUtils = [
         quantity: 1,
     },
     {
-        id: String(Math.floor(Date.now() * Math.random()).toString(10)),
+        id: '14',
         title: 'Irlandês',
         description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
         features: ['Especial', 'alcoólico'],
