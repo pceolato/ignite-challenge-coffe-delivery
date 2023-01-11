@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Minus, Plus} from "phosphor-react";
 
 export const CoffeContent = styled.div`
     display: flex;
@@ -88,3 +89,17 @@ export const RemoveButton = styled.button`
         background: ${props => props.theme['base-hover']};
     }
 `
+
+export const StyledMinus = styled(Minus)`
+  color: ${props => props.theme.purple};
+  &:hover {
+    color:  ${props => props.theme['purple-dark']};
+  }
+`;
+
+export const StyledPlus = styled(Plus)`
+  color: ${props => props.theme.purple};
+  &:hover {
+    color:  ${props => props.theme['purple-dark']};
+  }
+`;

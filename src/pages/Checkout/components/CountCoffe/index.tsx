@@ -1,7 +1,7 @@
-import { Minus, Plus, Trash } from "phosphor-react";
+import { Trash } from "phosphor-react";
 import { useContext, useState } from "react";
 import { CoffeContext } from "../../../../contexts/CoffeContext";
-import { Amount, CoffeContent, CoffeDescription, ImageCoffe, MinusButton, PlusButton, PriceCoffeTotal, Quantity, RemoveButton, TitleCoffe } from "./styles";
+import { Amount, CoffeContent, CoffeDescription, ImageCoffe, MinusButton, PlusButton, PriceCoffeTotal, Quantity, RemoveButton, StyledMinus, StyledPlus, TitleCoffe } from "./styles";
 
 interface CountCoffe {
     id: string;
@@ -16,13 +16,15 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
     const { cart, handleDeleteOfCart, handleSetQuantity } = useContext(CoffeContext)
 
     function increaseCoffe() {
-        setCurrentQuantity(state => state + 1)
-        handleSetQuantity(id, (currentQuantity + 1))
+        const QuantityPlus = currentQuantity + 1
+        setCurrentQuantity(QuantityPlus)
+        handleSetQuantity(id, QuantityPlus)
     }
 
     function decreaseCoffe() {
-        setCurrentQuantity(state => state - 1)
-        handleSetQuantity(id, (currentQuantity -1))
+        const QuantityMinus = currentQuantity - 1
+        setCurrentQuantity(QuantityMinus)
+        handleSetQuantity(id, QuantityMinus)
     }
 
     function click() {
@@ -45,14 +47,14 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
                                 type="button"
                                 disabled={currentQuantity <= 1 }
                             >
-                                <Minus size={14} color="#8047f8" weight="bold" />
+                               <StyledMinus size={14} weight="bold" />
                             </MinusButton>
                                 {currentQuantity}
                             <PlusButton 
                                 onClick={increaseCoffe} 
                                 type="button"
                             >
-                                <Plus size={14} color="#8047f8" weight="bold" />
+                                <StyledPlus size={14} weight="bold" />
                             </PlusButton>
                         </Amount>
                         <RemoveButton 
