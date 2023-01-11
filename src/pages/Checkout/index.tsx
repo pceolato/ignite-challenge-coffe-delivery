@@ -1,52 +1,32 @@
-import { CalculatePrice, CardOption, CheckoutFormContainer,
-            CityInput,
-            CityState,
-            Coffes,
-            CoffesCountContainer,
-            ComplementInput,
-            ComplementInputGroup,
-            ConfesCountContent,
-            ConfirmButton,
-            DescriptionForm, 
+import {    CardOption,
+            CheckoutFormContainer,
             DescriptionOrder,
             DescriptionPayment,
-            DistricCity,
-            DistrictInput,
-            FormContent,
-            ItemsTotal,
-            NumberComplement,
-            NumberInput,
-            OptionalPlaceholder,
             OrderContainer,
             PaymentContainer,
             PaymentOptions,
-            StateInput,
-            StreetInput,
             Title,
             TitleCardPayment,
-            TitleOrder,
-            TotalOrder,
-            ZipCodeInput } from './styles';
-import { useForm } from 'react-hook-form'
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from 'phosphor-react';
-import { CountCoffe } from './components/CountCoffe';
-import { useContext, useEffect, useState } from 'react';
+            TitleOrder } from './styles';
+import { useForm, FormProvider } from 'react-hook-form'
+import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react';
+import { useContext, useState } from 'react';
 import { CoffeContext } from '../../contexts/CoffeContext';
 import { useNavigate } from 'react-router-dom';
 
 import cep from 'cep-promise'
+import { FormCheckout } from './components/FormCheckout';
+import { SelectedCoffes } from './components/SelectedCoffes';
 
 export function Checkout() {
-    const { cart, handleClearCart } = useContext(CoffeContext)
-    const { register, handleSubmit, watch, setValue } = useForm()
+    const { handleClearCart } = useContext(CoffeContext)
+
+    const newCheckoutForm = useForm()
+    const { register, handleSubmit, watch, setValue } = newCheckoutForm
 
     const [ typePayment, setTypePayment ] = useState('')
 
     const navigate = useNavigate();
-
-    function handleBackToHome() {
-        navigate('/')
-    }
     
     function handleConfirmCart(data: any) {
         const checkoutData = {
@@ -75,82 +55,13 @@ export function Checkout() {
         }
     }
 
-    const totalPrice = cart?.map((order) => order.price * order.quantity)
-    .reduce((to, from) => to + from, 0);
-
-    const formattPrice = totalPrice.toLocaleString('pt-br',{minimumFractionDigits: 2})
-    const formattPriceTotal = (totalPrice + 3.50).toLocaleString('pt-br',{minimumFractionDigits: 2})
-
     return (
         <CheckoutFormContainer onSubmit={handleSubmit(handleConfirmCart)}>
             <OrderContainer>
                 <Title>Complete seu pedido</Title>
-                <FormContent>
-                    <DescriptionForm>
-                        <MapPinLine size={22} color="#C47F17" />
-                        <div>
-                            <TitleOrder>Endereço de Entrega</TitleOrder>
-                            <DescriptionOrder>Informe o endereço onde deseja receber seu pedido</DescriptionOrder>
-                        </div>
-                    </DescriptionForm>
-                    <ZipCodeInput 
-                        id="zip-code"
-                        type="text"
-                        placeholder="CEP"
-                        required
-                        {...register('zip-code')}
-                    />
-                    <StreetInput
-                        id="street"
-                        type="text"
-                        placeholder="Rua"
-                        required
-                        {...register('street')}
-                    />
-                    <NumberComplement>
-                        <NumberInput
-                            id="number"
-                            type="text"
-                            placeholder="Número"
-                            required
-                            {...register('number')}
-                        />
-                        <ComplementInputGroup>
-                            <ComplementInput
-                                id="complement"
-                                type="text"
-                                placeholder="Complemento"
-                                {...register('complement')}
-                            />
-                            <OptionalPlaceholder>Opcional</OptionalPlaceholder>
-                        </ComplementInputGroup>
-                    </NumberComplement>
-                    <CityState>
-                        <DistricCity>
-                            <DistrictInput
-                                id="district"
-                                type="text"
-                                placeholder="Bairro"
-                                required
-                                {...register('district')}
-                            />  
-                            <CityInput
-                                id="city"
-                                type="text"
-                                placeholder="Cidade"
-                                required
-                                {...register('city')}
-                            />
-                        </DistricCity>
-                        <StateInput
-                            id="state"
-                            type="text"
-                            placeholder="UF"
-                            required
-                            {...register('state')}
-                        />      
-                    </CityState>
-                </FormContent>
+                <FormProvider {...newCheckoutForm}>
+                    <FormCheckout />
+                </FormProvider>
                 <PaymentContainer>
                     <DescriptionPayment>
                         <CurrencyDollar size={22} color="#8047F8" />
@@ -186,54 +97,9 @@ export function Checkout() {
                     </PaymentOptions>
                 </PaymentContainer>
             </OrderContainer>
-            <CoffesCountContainer>
-                <Title>Cafés selecionados</Title>
-                <ConfesCountContent>
-                    <Coffes>
-                        { cart?.map(order => (
-                            <CountCoffe 
-                                id={order.id}
-                                key={order.id}
-                                title={order.title} 
-                                quantity={order.quantity}
-                                image={order.image}
-                                value={order.price}
-                            />
-                        )) }
-                    </Coffes>
-                    <CalculatePrice>
-                        {
-                            cart.length !== 0 ? (
-                            <>
-                                <ItemsTotal>
-                                    Total de itens
-                                    <span>R$ {formattPrice}</span>
-                                </ItemsTotal>
-                                <ItemsTotal>
-                                    Entrega
-                                    <span>R$ 3,50</span>
-                                </ItemsTotal>
-                                <TotalOrder>
-                                    Total
-                                    <strong>R$ {formattPriceTotal}</strong>
-                                </TotalOrder>
-                                <ConfirmButton type="submit" disabled={typePayment === ''}>confirmar pedido</ConfirmButton>
-                            </>
-                            ) : (
-                                <> 
-                                    <Title>Nenhum item no carrinho!</Title>
-                                    <ConfirmButton 
-                                        type="button"
-                                        onClick={handleBackToHome}
-                                    >
-                                        Selecionar Cafés
-                                    </ConfirmButton>
-                                </>
-                            )
-                        }
-                    </CalculatePrice>
-                </ConfesCountContent>
-            </CoffesCountContainer>
+            <FormProvider {...newCheckoutForm}>
+                <SelectedCoffes typePayment={typePayment} />
+            </FormProvider>
         </CheckoutFormContainer>
     )
 }
