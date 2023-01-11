@@ -92,7 +92,7 @@ export const TitleCardPayment = styled.span`
     font-size: 0.75rem;
 `
 
-export const CoffesCountContainer = styled.div``
+export const CoffeesCountContainer = styled.div``
 
 export const ConfesCountContent = styled.div`
     background: ${props => props.theme['base-card']};
@@ -103,7 +103,7 @@ export const ConfesCountContent = styled.div`
     border-radius: 6px 44px 6px 44px;
 `
 
-export const Coffes = styled.div`
+export const Coffees = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;

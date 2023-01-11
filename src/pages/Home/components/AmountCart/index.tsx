@@ -1,7 +1,7 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useContext, useState } from "react";
-import { CoffeContext } from "../../../../contexts/CoffeContext";
-import { Amount, CartButton, CartContainer, MinusButton, PlusButton, Price, PurchaseCoffe } from "./styles";
+import { CoffeeContext } from "../../../../contexts/CoffeeContext";
+import { Amount, CartButton, CartContainer, MinusButton, PlusButton, Price, PurchaseCoffee } from "./styles";
 
 interface AmountCartProps {
     id: string;
@@ -9,24 +9,24 @@ interface AmountCartProps {
 }
 
 export function AmountCart({id, price}: AmountCartProps) {
-    const { coffes, handleSetCart } = useContext(CoffeContext)
-    const [ amountCoffe, setAmountCoffe ] = useState(1)
+    const { coffees, handleSetCart } = useContext(CoffeeContext)
+    const [ amountCoffee, setAmountCoffee ] = useState(1)
 
-    function increaseCoffe() {
-        setAmountCoffe(state => state + 1)
+    function increaseCoffee() {
+        setAmountCoffee(state => state + 1)
     }
 
-    function decreaseCoffe() {
-        setAmountCoffe(state => state - 1)
+    function decreaseCoffee() {
+        setAmountCoffee(state => state - 1)
     }
 
     function addNewOrder() {
-        const coffeSellect = coffes.find(coffe => coffe.id === id)
+        const coffeeSellect = coffees.find(coffee => coffee.id === id)
 
-        if(coffeSellect !== undefined) {
+        if(coffeeSellect !== undefined) {
             const coffeOrder = {
-                ...coffeSellect,
-                quantity: amountCoffe
+                ...coffeeSellect,
+                quantity: amountCoffee
             }
     
             handleSetCart(coffeOrder)
@@ -36,18 +36,18 @@ export function AmountCart({id, price}: AmountCartProps) {
     const formattPrice = price.toLocaleString('pt-br',{minimumFractionDigits: 2})
     
     return (
-        <PurchaseCoffe>
+        <PurchaseCoffee>
             <Price>
                 <span>R$</span>
                 {formattPrice}
             </Price>
             <CartContainer>
                 <Amount>
-                    <MinusButton onClick={decreaseCoffe} disabled={amountCoffe <= 1}>
+                    <MinusButton onClick={decreaseCoffee} disabled={amountCoffee <= 1}>
                         <Minus size={14} color="#8047f8" weight="bold" />
                     </MinusButton>
-                    {amountCoffe}
-                    <PlusButton onClick={increaseCoffe}>
+                    {amountCoffee}
+                    <PlusButton onClick={increaseCoffee}>
                         <Plus size={14} color="#8047f8" weight="bold" />
                     </PlusButton>
                 </Amount>
@@ -55,6 +55,6 @@ export function AmountCart({id, price}: AmountCartProps) {
                     <ShoppingCart size={24} color="#f3f2f2" weight="fill" />
                 </CartButton>
             </CartContainer>
-        </PurchaseCoffe>
+        </PurchaseCoffee>
     )
 }

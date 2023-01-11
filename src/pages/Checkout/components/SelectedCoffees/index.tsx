@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CoffeContext } from "../../../../contexts/CoffeContext";
-import { CountCoffe } from "../CountCoffe";
-import { CalculatePrice, Coffes, CoffesCountContainer, ConfesCountContent, ConfirmButton, ItemsTotal, Title, TotalOrder } from "./styles";
+import { CoffeeContext } from "../../../../contexts/CoffeeContext";
+import { CountCoffee } from "../CountCoffee";
+import { CalculatePrice, Coffees, CoffeesCountContainer, ConfesCountContent, ConfirmButton, ItemsTotal, Title, TotalOrder } from "./styles";
 
-interface SelectedCoffesProps {
+interface SelectedCoffeesProps {
     typePayment?: string;
 }
 
 
-export function SelectedCoffes({ typePayment }: SelectedCoffesProps) {
-    const { cart } = useContext(CoffeContext);
+export function SelectedCoffees({ typePayment }: SelectedCoffeesProps) {
+    const { cart } = useContext(CoffeeContext);
     const navigate = useNavigate();
     
     function handleBackToHome() {
@@ -24,12 +24,12 @@ export function SelectedCoffes({ typePayment }: SelectedCoffesProps) {
     const formattPriceTotal = (totalPrice + 3.50).toLocaleString('pt-br',{minimumFractionDigits: 2})
 
     return (
-        <CoffesCountContainer>
+        <CoffeesCountContainer>
                 <Title>Cafés selecionados</Title>
                 <ConfesCountContent>
-                    <Coffes>
+                    <Coffees>
                         { cart?.map(order => (
-                            <CountCoffe 
+                            <CountCoffee 
                                 id={order.id}
                                 key={order.id}
                                 title={order.title} 
@@ -38,7 +38,7 @@ export function SelectedCoffes({ typePayment }: SelectedCoffesProps) {
                                 value={order.price}
                             />
                         )) }
-                    </Coffes>
+                    </Coffees>
                     <CalculatePrice>
                         {
                             cart.length !== 0 ? (
@@ -71,6 +71,6 @@ export function SelectedCoffes({ typePayment }: SelectedCoffesProps) {
                         }
                     </CalculatePrice>
                 </ConfesCountContent>
-            </CoffesCountContainer>
+            </CoffeesCountContainer>
     )
 }

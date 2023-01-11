@@ -1,4 +1,4 @@
-export const CoffesUtils = [
+export const CoffeesUtils = [
     {
         id: '1',
         title: 'Expresso Tradicional',

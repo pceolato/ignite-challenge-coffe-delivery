@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Minus, Plus} from "phosphor-react";
 
-export const CoffeContent = styled.div`
+export const CoffeeContent = styled.div`
     display: flex;
     gap: 1.25rem;
 
@@ -9,12 +9,12 @@ export const CoffeContent = styled.div`
     border-bottom: 1px solid ${props => props.theme['base-button']};
 `
 
-export const ImageCoffe = styled.img`
+export const ImageCoffee = styled.img`
     width: 64px;
     height: 64px;
 `
 
-export const TitleCoffe = styled.h5`
+export const TitleCoffee = styled.h5`
     font-size: 1rem;
     font-weight: 400;
     color: ${props => props.theme['base-subtitle']};
@@ -22,13 +22,13 @@ export const TitleCoffe = styled.h5`
     margin-bottom: 0.5rem;
 `
 
-export const CoffeDescription = styled.div`
+export const CoffeeDescription = styled.div`
     display: flex;
     align-items: flex-start;
     gap: 3.125rem;
 `
 
-export const PriceCoffeTotal = styled.strong`
+export const PriceCoffeeTotal = styled.strong`
     font-weight: bold;
     font-size: 0.875rem;
     color: ${props => props.theme['base-text']};

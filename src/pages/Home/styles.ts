@@ -60,13 +60,13 @@ export const Features = styled.div`
     padding-top: 4.125rem;
 `
 
-export const CoffesContainer = styled.div`
+export const CoffeesContainer = styled.div`
     margin: 0 auto;
     width: 90%;
 
     max-width: 70rem;
 `
-export const CoffesContent = styled.div`
+export const CoffeesContent = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -75,7 +75,7 @@ export const CoffesContent = styled.div`
     
     `
 
-export const TitleCoffes = styled.h2`
+export const TitleCoffees = styled.h2`
     color: ${props => props.theme['base-subtitle']};
     
     font-family: 'Baloo 2', cursive;

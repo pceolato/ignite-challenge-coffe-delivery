@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import img from '../../assets/intro-image.svg'
-import { CoffeContext } from '../../contexts/CoffeContext'
-import { CardCoffe } from './components/CardCoffe'
+import { CoffeeContext } from '../../contexts/CoffeeContext'
+import { CardCoffee } from './components/CardCoffee'
 import { Feature } from './components/Feature'
-import { CoffesContainer, CoffesContent, Features, InfosContent, IntroContainer, IntroContent, Subtitle, Title, TitleCoffes } from './styles'
+import { CoffeesContainer, CoffeesContent, Features, InfosContent, IntroContainer, IntroContent, Subtitle, Title, TitleCoffees } from './styles'
 
 export function Home() {
-    const { coffes } = useContext(CoffeContext)
+    const { coffees } = useContext(CoffeeContext)
 
     return (
         <>
@@ -26,26 +26,26 @@ export function Home() {
                     <img src={img} alt="" />
                 </IntroContent>
             </IntroContainer>
-            <CoffesContainer>
-                <TitleCoffes>
+            <CoffeesContainer>
+                <TitleCoffees>
                     Nossos cafés
-                </TitleCoffes>
-                <CoffesContent>
+                </TitleCoffees>
+                <CoffeesContent>
                     {
-                        coffes.map(coffe => (
-                            <CardCoffe
-                                key={coffe.id}
-                                id={coffe.id}
-                                title={coffe.title}
-                                description={coffe.description}
-                                features={coffe.features}
-                                image={coffe.image}
-                                price={coffe.price}
+                        coffees.map(coffee => (
+                            <CardCoffee
+                                key={coffee.id}
+                                id={coffee.id}
+                                title={coffee.title}
+                                description={coffee.description}
+                                features={coffee.features}
+                                image={coffee.image}
+                                price={coffee.price}
                             />
                         ))
                     }
-                </CoffesContent>
-            </CoffesContainer>
+                </CoffeesContent>
+            </CoffeesContainer>
         </>
     )
 }

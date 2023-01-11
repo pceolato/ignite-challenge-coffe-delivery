@@ -11,15 +11,15 @@ import {    CardOption,
 import { useForm, FormProvider } from 'react-hook-form'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react';
 import { useContext, useState } from 'react';
-import { CoffeContext } from '../../contexts/CoffeContext';
+import { CoffeeContext } from '../../contexts/CoffeeContext';
 import { useNavigate } from 'react-router-dom';
 
 import cep from 'cep-promise'
 import { FormCheckout } from './components/FormCheckout';
-import { SelectedCoffes } from './components/SelectedCoffes';
+import { SelectedCoffees } from './components/SelectedCoffees';
 
 export function Checkout() {
-    const { handleClearCart } = useContext(CoffeContext)
+    const { handleClearCart } = useContext(CoffeeContext)
 
     const newCheckoutForm = useForm()
     const { register, handleSubmit, watch, setValue } = newCheckoutForm
@@ -33,7 +33,7 @@ export function Checkout() {
             ...data,
             typePayment
         }
-        localStorage.setItem('@coffe-delivery-success', JSON.stringify(checkoutData))
+        localStorage.setItem('@coffee-delivery-success', JSON.stringify(checkoutData))
         handleClearCart()
         navigate('/order-success')
     }
@@ -98,7 +98,7 @@ export function Checkout() {
                 </PaymentContainer>
             </OrderContainer>
             <FormProvider {...newCheckoutForm}>
-                <SelectedCoffes typePayment={typePayment} />
+                <SelectedCoffees typePayment={typePayment} />
             </FormProvider>
         </CheckoutFormContainer>
     )

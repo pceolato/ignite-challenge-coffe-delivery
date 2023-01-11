@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PurchaseCoffe = styled.div`
+export const PurchaseCoffee = styled.div`
     margin-top: 2.0625rem;
     width: 100%;
     display: flex;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CoffeContainer = styled.div`
+export const CoffeeContainer = styled.div`
     width: 16rem;
     height: 19.375rem;
 
@@ -20,18 +20,18 @@ export const CoffeContainer = styled.div`
     }
 `
 
-export const CoffeImg = styled.div`
+export const CoffeeImg = styled.div`
     margin-top: calc(0px - 1.5rem);
 
     margin-bottom: 0.75rem;
 `
 
-export const FeaturesCoffe = styled.div`
+export const FeaturesCoffee = styled.div`
     display: flex;
     gap: 0.25rem;
 `
 
-export const FeatureCoffe = styled.span`
+export const FeatureCoffee = styled.span`
     background: ${props => props.theme['yellow-light']};
     color: ${props => props.theme['yellow-dark']};
 

@@ -16,7 +16,7 @@ interface dataSuccessType {
 export function Succces() {
     const [dataSuccess, setDataSuccess] = useState<dataSuccessType>({} as dataSuccessType)
     useEffect(() => {
-        const storage = localStorage.getItem('@coffe-delivery-success')
+        const storage = localStorage.getItem('@coffee-delivery-success')
 
         if(storage !== null) {
             const json = JSON.parse(storage)

@@ -1,9 +1,9 @@
 import { Trash } from "phosphor-react";
 import { useContext, useState } from "react";
-import { CoffeContext } from "../../../../contexts/CoffeContext";
-import { Amount, CoffeContent, CoffeDescription, ImageCoffe, MinusButton, PlusButton, PriceCoffeTotal, Quantity, RemoveButton, StyledMinus, StyledPlus, TitleCoffe } from "./styles";
+import { CoffeeContext } from "../../../../contexts/CoffeeContext";
+import { Amount, CoffeeContent, CoffeeDescription, ImageCoffee, MinusButton, PlusButton, PriceCoffeeTotal, Quantity, RemoveButton, StyledMinus, StyledPlus, TitleCoffee } from "./styles";
 
-interface CountCoffe {
+interface CountCoffee {
     id: string;
     image: string;
     title: string;
@@ -11,17 +11,17 @@ interface CountCoffe {
     value: number;
 }
 
-export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
+export function CountCoffee({ id, image, title, quantity, value }: CountCoffee) {
     const [currentQuantity, setCurrentQuantity] = useState(quantity)
-    const { cart, handleDeleteOfCart, handleSetQuantity } = useContext(CoffeContext)
+    const { cart, handleDeleteOfCart, handleSetQuantity } = useContext(CoffeeContext)
 
-    function increaseCoffe() {
+    function increaseCoffee() {
         const QuantityPlus = currentQuantity + 1
         setCurrentQuantity(QuantityPlus)
         handleSetQuantity(id, QuantityPlus)
     }
 
-    function decreaseCoffe() {
+    function decreaseCoffee() {
         const QuantityMinus = currentQuantity - 1
         setCurrentQuantity(QuantityMinus)
         handleSetQuantity(id, QuantityMinus)
@@ -35,15 +35,15 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
 
 
     return (
-        <CoffeContent>
-            <ImageCoffe src={`/coffes/${image}.svg`} alt="" />
-            <CoffeDescription>
+        <CoffeeContent>
+            <ImageCoffee src={`/coffees/${image}.svg`} alt="" />
+            <CoffeeDescription>
                 <div>
-                    <TitleCoffe>{title}</TitleCoffe>
+                    <TitleCoffee>{title}</TitleCoffee>
                     <Quantity>
                         <Amount>
                             <MinusButton 
-                                onClick={decreaseCoffe} 
+                                onClick={decreaseCoffee} 
                                 type="button"
                                 disabled={currentQuantity <= 1 }
                             >
@@ -51,7 +51,7 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
                             </MinusButton>
                                 {currentQuantity}
                             <PlusButton 
-                                onClick={increaseCoffe} 
+                                onClick={increaseCoffee} 
                                 type="button"
                             >
                                 <StyledPlus size={14} weight="bold" />
@@ -66,8 +66,8 @@ export function CountCoffe({ id, image, title, quantity, value }: CountCoffe) {
                         </RemoveButton>
                     </Quantity>
                 </div>
-                <PriceCoffeTotal>R$ {formattPrice}</PriceCoffeTotal>
-            </CoffeDescription>
-        </CoffeContent>
+                <PriceCoffeeTotal>R$ {formattPrice}</PriceCoffeeTotal>
+            </CoffeeDescription>
+        </CoffeeContent>
     )
 }

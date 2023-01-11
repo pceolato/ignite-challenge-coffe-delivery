@@ -1,8 +1,8 @@
 import { createContext, ReactNode, useEffect, useReducer, useState } from "react";
-import { CoffesUtils } from "../utils/coffes";
+import { CoffeesUtils } from "../utils/coffees";
 import { produce } from "immer";
 
-interface Coffe{
+interface Coffee{
     id: string;
     title: string;
     description: string;
@@ -12,27 +12,27 @@ interface Coffe{
     quantity: number;
 }
 
-interface CoffeContextType {
-    coffes: Coffe[];
-    cart: Coffe[];
-    handleSetCart:(order: Coffe) => void;
+interface CoffeeContextType {
+    coffees: Coffee[];
+    cart: Coffee[];
+    handleSetCart:(order: Coffee) => void;
     handleDeleteOfCart:(id: string) => void;
     handleSetQuantity:(id: string, quantity: number) => void;
     handleClearCart:() => void;
 }
 
-interface CoffeContextProviderProps {
+interface CoffeeContextProviderProps {
     children: ReactNode
 }
 
-export const CoffeContext = createContext<CoffeContextType>({} as CoffeContextType)
+export const CoffeeContext = createContext<CoffeeContextType>({} as CoffeeContextType)
 
-export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
-    const coffesList = CoffesUtils
+export function CoffeeContextProvider({ children }: CoffeeContextProviderProps) {
+    const coffeesList = CoffeesUtils
 
-    const [coffes, setCoffes] = useState<Coffe[]>(coffesList)
+    const [coffees, setCoffees] = useState<Coffee[]>(coffeesList)
 
-    const [cart, dispatch] = useReducer((state: Coffe[], action: any)  => {
+    const [cart, dispatch] = useReducer((state: Coffee[], action: any)  => {
         switch(action.type) {
             case 'CARRY_CART': {
                 return action.payload.storage
@@ -86,7 +86,7 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         }
     }, [])
 
-    function handleSetCart(order: Coffe) {
+    function handleSetCart(order: Coffee) {
         dispatch({
             type: 'ADD_ORDER_IN_CART',
             payload: {
@@ -120,7 +120,7 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     }
     
     useEffect(() => {
-        const storage = localStorage.getItem('@coffe-delivery-cart')
+        const storage = localStorage.getItem('@coffee-delivery-cart')
         if(storage !== null) {
             dispatch({
                 type: 'CARRY_CART',
@@ -133,16 +133,16 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     
     useEffect(() => {
         if(cart.length !== 0) {
-            localStorage.setItem('@coffe-delivery-cart', JSON.stringify(cart))
+            localStorage.setItem('@coffee-delivery-cart', JSON.stringify(cart))
         } else {
-            localStorage.removeItem('@coffe-delivery-cart')
+            localStorage.removeItem('@coffee-delivery-cart')
         }
     }, [cart])
 
     return (
-        <CoffeContext.Provider 
+        <CoffeeContext.Provider 
             value={{
-                coffes,
+                coffees,
                 handleSetCart,
                 cart,
                 handleDeleteOfCart,
@@ -150,6 +150,6 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
                 handleClearCart
             }}>
             { children }
-        </CoffeContext.Provider>
+        </CoffeeContext.Provider>
     )
 }

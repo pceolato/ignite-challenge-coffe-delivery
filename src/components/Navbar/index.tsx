@@ -1,12 +1,12 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CoffeContext } from '../../contexts/CoffeContext'
+import { CoffeeContext } from '../../contexts/CoffeeContext'
 import { CartButton, CountCart, Location, NavbarContainer, NavbarContent, TextLocation } from './styles'
 import logo from '/Logo.svg'
 
 export function Navbar() {
-    const { cart } = useContext(CoffeContext)
+    const { cart } = useContext(CoffeeContext)
     const navigate = useNavigate();
 
     function handleCheckoutNavigate() {

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const CoffesCountContainer = styled.div``
+export const CoffeesCountContainer = styled.div``
 
 export const ConfesCountContent = styled.div`
     background: ${props => props.theme['base-card']};
@@ -21,7 +21,7 @@ export const Title = styled.h1`
     margin-bottom: 1rem;
 `
 
-export const Coffes = styled.div`
+export const Coffees = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
