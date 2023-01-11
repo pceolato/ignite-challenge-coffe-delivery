@@ -30,6 +30,7 @@ export const CoffeDescription = styled.div`
 
 export const PriceCoffeTotal = styled.strong`
     font-weight: bold;
+    font-size: 0.875rem;
     color: ${props => props.theme['base-text']};
 `
 

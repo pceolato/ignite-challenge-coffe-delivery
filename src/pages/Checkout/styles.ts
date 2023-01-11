@@ -91,7 +91,7 @@ export const StreetInput = styled(baseInput)``
 
 export const NumberComplement = styled.div`
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 2fr;
     gap: 0.75rem;
 
     @media (max-width: 750px) {
@@ -101,7 +101,35 @@ export const NumberComplement = styled.div`
 
 export const NumberInput = styled(baseInput)``
 
-export const ComplementInput = styled(baseInput)``
+export const ComplementInputGroup = styled.div`
+    display: flex;
+
+    &:focus {
+        border: 1px solid ${props => props.theme['yellow-dark']};
+    }
+`
+
+export const ComplementInput = styled(baseInput)`
+    flex: 1;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+`
+export const OptionalPlaceholder = styled.div`
+    background-color: ${props => props.theme['base-input']};
+    color: ${props => props.theme['base-label']};
+
+    display: flex;
+    align-items: center;
+    
+    border: 1px solid ${props => props.theme['base-button']};
+    border-left: 0;
+    border-radius: 0 4px 4px 0;
+    
+    padding: 0.75rem;
+
+    font-size: 0.75rem;
+    font-style: italic;
+`
 
 export const CityState = styled.div`
     display: flex;
@@ -250,7 +278,7 @@ export const ConfirmButton = styled.button`
         cursor: not-allowed;
     }
 
-    &[not-disabled]:hover {
+    &:not(:disabled):hover {
         background: ${props => props.theme['yellow-dark']};
     }
 `

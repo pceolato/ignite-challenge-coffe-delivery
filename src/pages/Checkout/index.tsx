@@ -4,6 +4,7 @@ import { CalculatePrice, CardOption, CheckoutFormContainer,
             Coffes,
             CoffesCountContainer,
             ComplementInput,
+            ComplementInputGroup,
             ConfesCountContent,
             ConfirmButton,
             DescriptionForm, 
@@ -15,6 +16,7 @@ import { CalculatePrice, CardOption, CheckoutFormContainer,
             ItemsTotal,
             NumberComplement,
             NumberInput,
+            OptionalPlaceholder,
             OrderContainer,
             PaymentContainer,
             PaymentOptions,
@@ -113,12 +115,15 @@ export function Checkout() {
                             required
                             {...register('number')}
                         />
-                        <ComplementInput
-                            id="complement"
-                            type="text"
-                            placeholder="Complemento"
-                            {...register('complement')}
-                        /> 
+                        <ComplementInputGroup>
+                            <ComplementInput
+                                id="complement"
+                                type="text"
+                                placeholder="Complemento"
+                                {...register('complement')}
+                            />
+                            <OptionalPlaceholder>Opcional</OptionalPlaceholder>
+                        </ComplementInputGroup>
                     </NumberComplement>
                     <CityState>
                         <DistricCity>

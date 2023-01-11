@@ -6,7 +6,7 @@ export const IntroContainer = styled.div`
   width: 100%;
   padding: 5.75rem 0;
   
-  background: url(${backgroundImage});
+  background: url(${backgroundImage}) no-repeat center;
   `
 
 export const IntroContent = styled.div`

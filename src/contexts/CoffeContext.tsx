@@ -34,7 +34,6 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
 
     const [cart, dispatch] = useReducer((state: Coffe[], action: any)  => {
         switch(action.type) {
-            //TODO
             case 'CARRY_CART': {
                 return action.payload.storage
             }
