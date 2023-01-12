@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useReducer, useState } from "react";
 import { CoffeesUtils } from "../utils/coffees";
 import { cartReducer } from "../reducers/cart/reducer";
-import { getCartAction, handleClearCartAction, handleDeleteOfCartAction, handleSetCartAction, handleSetQuantityAction } from "../reducers/cart/actions";
+import { handleClearCartAction, handleDeleteOfCartAction, handleSetCartAction, handleSetQuantityAction } from "../reducers/cart/actions";
 
 interface Coffee{
     id: string;
@@ -33,7 +33,13 @@ export function CoffeeContextProvider({ children }: CoffeeContextProviderProps) 
 
     const [coffees, setCoffees] = useState<Coffee[]>(coffeesList)
 
-    const [cart, dispatch] = useReducer(cartReducer, [])
+    const [cart, dispatch] = useReducer(cartReducer, [], () => {
+        const storage = localStorage.getItem('@coffee-delivery-cart')
+        if(storage) {
+            return JSON.parse(storage)
+        }
+        return []
+    })
 
     function handleSetCart(order: Coffee) {
         dispatch(handleSetCartAction(order))
@@ -50,13 +56,6 @@ export function CoffeeContextProvider({ children }: CoffeeContextProviderProps) 
     function handleClearCart() {
         dispatch(handleClearCartAction())
     }
-    
-    useEffect(() => {
-        const storage = localStorage.getItem('@coffee-delivery-cart')
-        if(storage !== null) {
-            dispatch(getCartAction(storage))
-        }
-    }, [])
     
     useEffect(() => {
         if(cart.length !== 0) {

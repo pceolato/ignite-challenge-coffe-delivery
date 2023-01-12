@@ -1,20 +1,10 @@
 import { Coffee } from "./reducer"
 
 export enum ActionTypes {
-    CARRY_CART = 'CARRY_CART',
     ADD_ORDER_IN_CART = 'ADD_ORDER_IN_CART',
     DELETE_OF_CART = 'DELETE_OF_CART',
     SET_QUANTITY = 'SET_QUANTITY',
     CLEAR_CART = 'CLEAR_CART'
-}
-
-export function getCartAction(cart: any) {
-    return {
-        type: ActionTypes.CARRY_CART,
-        payload: {
-            storage: JSON.parse(cart)
-        },
-    }
 }
 
 export function handleSetCartAction(order: Coffee) {

@@ -13,10 +13,10 @@ export interface Coffee{
 
 export function cartReducer(state: Coffee[], action: any) {
     switch(action.type) {
-        case ActionTypes.CARRY_CART: {
-            return action.payload.storage
+        case 'example, never fall here' : { // test => if you remove this, it presents an error in the context
+            return action
         }
-
+        
         case ActionTypes.ADD_ORDER_IN_CART: {
             const currentOrderIndex = state.findIndex(order => {
                 return order.id === action.payload.id
