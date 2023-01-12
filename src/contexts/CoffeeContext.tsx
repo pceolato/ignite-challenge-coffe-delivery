@@ -33,13 +33,17 @@ export function CoffeeContextProvider({ children }: CoffeeContextProviderProps) 
 
     const [coffees, setCoffees] = useState<Coffee[]>(coffeesList)
 
-    const [cart, dispatch] = useReducer(cartReducer, [], () => {
-        const storage = localStorage.getItem('@coffee-delivery-cart')
-        if(storage) {
-            return JSON.parse(storage)
+    const [cart, dispatch] = useReducer(
+        cartReducer, 
+        [], 
+        () => {
+            const storage = localStorage.getItem('@coffee-delivery-cart')
+            if(storage) {
+                return JSON.parse(storage)
+            }
+            return []
         }
-        return []
-    })
+    )
 
     function handleSetCart(order: Coffee) {
         dispatch(handleSetCartAction(order))

@@ -11,11 +11,8 @@ export interface Coffee{
     quantity: number;
 }
 
-export function cartReducer(state: Coffee[], action: any) {
+export function cartReducer(state: Coffee[], action: any): Coffee[] {
     switch(action.type) {
-        case 'example, never fall here' : { // test => if you remove this, it presents an error in the context
-            return action
-        }
         
         case ActionTypes.ADD_ORDER_IN_CART: {
             const currentOrderIndex = state.findIndex(order => {
@@ -47,13 +44,12 @@ export function cartReducer(state: Coffee[], action: any) {
                 return order.id === action.payload.id
             })
 
-            if(currentOrderIndex < 0) {
-                return 
+            if(currentOrderIndex >= 0) {
+                return produce(state, draft => {
+                    draft[currentOrderIndex].quantity = action.payload.quantity
+                })
             }
 
-            return produce(state, draft => {
-                draft[currentOrderIndex].quantity = action.payload.quantity
-            })
         }
 
         case ActionTypes.CLEAR_CART: {
