@@ -1,7 +1,7 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useContext, useState } from "react";
 import { CoffeeContext } from "../../../../contexts/CoffeeContext";
-import { Amount, CartButton, CartContainer, MinusButton, PlusButton, Price, PurchaseCoffee } from "./styles";
+import { Amount, CartButton, CartContainer, MinusButton, PlusButton, Price, PurchaseCoffee, StyledMinus, StyledPlus } from "./styles";
 
 interface AmountCartProps {
     id: string;
@@ -44,11 +44,11 @@ export function AmountCart({id, price}: AmountCartProps) {
             <CartContainer>
                 <Amount>
                     <MinusButton onClick={decreaseCoffee} disabled={amountCoffee <= 1}>
-                        <Minus size={14} color="#8047f8" weight="bold" />
+                        <StyledMinus size={14} weight="bold" />
                     </MinusButton>
                     {amountCoffee}
                     <PlusButton onClick={increaseCoffee}>
-                        <Plus size={14} color="#8047f8" weight="bold" />
+                        <StyledPlus size={14} weight="bold" />
                     </PlusButton>
                 </Amount>
                 <CartButton onClick={addNewOrder}>

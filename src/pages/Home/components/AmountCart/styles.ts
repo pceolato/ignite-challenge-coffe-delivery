@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Minus, Plus} from "phosphor-react";
 
 export const PurchaseCoffee = styled.div`
     margin-top: 2.0625rem;
@@ -54,6 +55,20 @@ const BaseButton = styled.button`
 
 export const MinusButton = styled(BaseButton)``
 export const PlusButton = styled(BaseButton)``
+
+export const StyledMinus = styled(Minus)`
+  color: ${props => props.theme.purple};
+  &:hover {
+    color:  ${props => props.theme['purple-dark']};
+  }
+`;
+
+export const StyledPlus = styled(Plus)`
+  color: ${props => props.theme.purple};
+  &:hover {
+    color:  ${props => props.theme['purple-dark']};
+  }
+`;
 
 export const CartButton = styled.button`
     display: flex;
