@@ -28,7 +28,8 @@ export const SuccessContent = styled.div`
     gap: 6.375rem;
 
 `
-export const Div = styled.div`
+export const CardSummary = styled.div`
+    width: 100%;
     background: linear-gradient(to right, #DBAC2C,#8047F8);
     padding: 1px;
     border-radius: 6px 36px;
@@ -37,7 +38,7 @@ export const Div = styled.div`
 `
 
 export const OrderSuccessContent = styled.div`
-    width: 32.875rem;
+    width: 1005;
     background: #fff;
     padding: 2.5rem;
     border-radius: 6px 36px;
@@ -74,5 +75,11 @@ export const DeliveryInformation = styled.div`
 
 export const Span = styled.span`
     display: block;
-    color: ${props => props.theme['base-text']}
+    color: ${props => props.theme['base-text']};
+`
+
+export const ImageSucces = styled.div`
+    @media (max-width: 1020px) {
+        display: none;
+    }
 `

@@ -1,7 +1,7 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import imageSuccess from '../../assets/Illustration-success.svg'
-import { Avatar, DeliveryInformation, Div, ItemInformation, OrderSuccessContent, Span, SubtitleSuccess, SuccessContainer, SuccessContent, TitleSuccess } from './styles'
+import { Avatar, CardSummary, DeliveryInformation, ImageSucces, ItemInformation, OrderSuccessContent, Span, SubtitleSuccess, SuccessContainer, SuccessContent, TitleSuccess } from './styles'
 
 interface dataSuccessType {
     street: string,
@@ -37,7 +37,7 @@ export function Succces() {
             <TitleSuccess>Uhu! Pedido confirmado</TitleSuccess>
             <SubtitleSuccess>Agora é só aguardar que logo o café chegará até você</SubtitleSuccess>
             <SuccessContent>  
-                <Div>
+                <CardSummary>
                     <OrderSuccessContent>
                         <ItemInformation>
                             <Avatar avatarColor='purple'>
@@ -67,10 +67,10 @@ export function Succces() {
                             </DeliveryInformation>
                         </ItemInformation>
                     </OrderSuccessContent>
-                </Div>  
-                <div>
+                </CardSummary>  
+                <ImageSucces>
                     <img src={imageSuccess} alt="" />
-                </div>
+                </ImageSucces>
             </SuccessContent>
         </SuccessContainer>
     )
