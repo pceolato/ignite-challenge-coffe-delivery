@@ -1,7 +1,7 @@
 import { Trash } from "phosphor-react";
 import { useContext, useState } from "react";
 import { CoffeeContext } from "../../../../contexts/CoffeeContext";
-import { Amount, CoffeeContent, CoffeeDescription, ImageCoffee, MinusButton, PlusButton, PriceCoffeeTotal, Quantity, RemoveButton, StyledMinus, StyledPlus, TitleCoffee } from "./styles";
+import { Amount, CoffeeContent, CoffeeDescription, ImageCoffee, MinusButton, PlusButton, PriceCoffeeTotal, Quantity, RemoveButton, RemoveButtonIcon, StyledMinus, StyledPlus, TitleCoffee } from "./styles";
 
 interface CountCoffee {
     id: string;
@@ -66,7 +66,15 @@ export function CountCoffee({ id, image, title, quantity, value }: CountCoffee) 
                         </RemoveButton>
                     </Quantity>
                 </div>
-                <PriceCoffeeTotal>R$ {formattPrice}</PriceCoffeeTotal>
+                <PriceCoffeeTotal>
+                    R$ {formattPrice}
+                    <RemoveButtonIcon 
+                            onClick={click} 
+                            type="button"   
+                        >
+                            <Trash size={16} color="#8047f8" />
+                    </RemoveButtonIcon>
+                </PriceCoffeeTotal>
             </CoffeeDescription>
         </CoffeeContent>
     )

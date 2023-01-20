@@ -10,7 +10,7 @@ export const FormContent = styled.div`
 
     padding: 2.5rem;
 
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.75rem; 
 `
 
 export const DescriptionForm = styled.div`
@@ -53,23 +53,27 @@ const baseInput = styled.input`
 
 export const ZipCodeInput = styled(baseInput)`
     width: 12.5rem;
+
+    @media (max-width: 750px) {
+        width: 100%;
+    }
 `
 
 export const StreetInput = styled(baseInput)``
 
 export const NumberComplement = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
     gap: 0.75rem;
 
     @media (max-width: 750px) {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 `
 
 export const NumberInput = styled(baseInput)``
 
 export const ComplementInputGroup = styled.div`
+    flex: 1;
     display: flex;
 
     &:focus {
@@ -81,6 +85,11 @@ export const ComplementInput = styled(baseInput)`
     flex: 1;
     border-right: 0;
     border-radius: 4px 0 0 4px;
+
+    @media (max-width: 750px) {
+        border: 1px solid ${props => props.theme['base-button']};
+        border-radius: 4px;
+    }
 `
 export const OptionalPlaceholder = styled.div`
     background-color: ${props => props.theme['base-input']};
@@ -97,6 +106,10 @@ export const OptionalPlaceholder = styled.div`
 
     font-size: 0.75rem;
     font-style: italic;
+
+    @media (max-width: 750px) {
+        display: none;
+    }
 `
 
 export const CityState = styled.div`

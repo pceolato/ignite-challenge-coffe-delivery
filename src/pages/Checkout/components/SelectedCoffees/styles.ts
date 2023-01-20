@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
-export const CoffeesCountContainer = styled.div``
+export const CoffeesCountContainer = styled.div`
+        width: 100%;
+`
 
 export const ConfesCountContent = styled.div`
     background: ${props => props.theme['base-card']};

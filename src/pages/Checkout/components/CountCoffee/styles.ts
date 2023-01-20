@@ -23,12 +23,17 @@ export const TitleCoffee = styled.h5`
 `
 
 export const CoffeeDescription = styled.div`
+    width: 100%;
     display: flex;
     align-items: flex-start;
-    gap: 3.125rem;
+    justify-content: space-between;
 `
 
-export const PriceCoffeeTotal = styled.strong`
+export const PriceCoffeeTotal = styled.div`
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
     font-weight: bold;
     font-size: 0.875rem;
     color: ${props => props.theme['base-text']};
@@ -68,7 +73,7 @@ export const MinusButton = styled(BaseButton)``
 
 export const PlusButton = styled(BaseButton)``
 
-export const RemoveButton = styled.button`
+const baseButton = styled.button`
     height: 2rem;
     padding: 0.5rem;
 
@@ -88,6 +93,18 @@ export const RemoveButton = styled.button`
 
     &:hover {
         background: ${props => props.theme['base-hover']};
+    }
+`
+
+export const RemoveButton = styled(baseButton)`
+    @media (max-width: 750px) {
+        display: none;
+    }
+`
+
+export const RemoveButtonIcon = styled(baseButton)`
+    @media (min-width: 750px) {
+        display: none;
     }
 `
 

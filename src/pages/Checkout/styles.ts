@@ -21,6 +21,10 @@ export const OrderContainer = styled.div`
 
 
     gap: 0.75rem;
+
+    @media (max-width: 750px) {
+        width: 100%;
+    }
 `
 export const Title = styled.h1`
     font-family: 'Baloo 2', cursive;
@@ -61,6 +65,11 @@ export const DescriptionPayment = styled.div`
 export const PaymentOptions = styled.div`
     display: flex;
     gap: 0.75rem;
+
+
+    @media (max-width: 750px) {
+       flex-direction: column;
+    }
 `
 
 export const CardOption = styled.button`
