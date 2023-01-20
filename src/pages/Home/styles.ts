@@ -6,14 +6,15 @@ export const IntroContainer = styled.div`
   width: 100%;
   padding: 5.75rem 0;
   
-  background: url(${backgroundImage}) no-repeat center;
+  background: url(${backgroundImage}) no-repeat center/cover;
   `
 
 export const IntroContent = styled.div`
     width: 90%;
     max-width: 70rem;
     display: flex;
-    justify-content: space-between;
+    gap: 3.5rem;
+    justify-content: center;
     
     margin: 0 auto;
     
